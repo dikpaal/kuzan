@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-    title: "CaliForm AI - Calisthenics Form Analyzer",
+    title: "Kuzan",
     description: "AI-powered calisthenics form analysis and training recommendations for beginners",
 }
 

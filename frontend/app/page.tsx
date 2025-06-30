@@ -90,7 +90,7 @@ Keep practicing consistently - you're on the right track!`,
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center gap-2 mb-3">
                         <Activity className="h-6 w-6 text-stone-600" />
-                        <h1 className="text-2xl font-medium text-stone-800">Form Check</h1>
+                        <h1 className="text-2xl font-medium text-stone-800">Kuzan</h1>
                     </div>
                     <p className="text-stone-600 max-w-lg mx-auto">
                         Upload a photo of your movement and get feedback on your form
