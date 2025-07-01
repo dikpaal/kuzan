@@ -3,7 +3,7 @@ An app for people wanting to start calisthenics.
 
 ## Progress
 
-### Currently working on:
+### Currently:
 - [ ] Integrating an LLM/SLM
 
 ### Decide stack 
