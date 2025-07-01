@@ -4,7 +4,8 @@ An app for people wanting to start calisthenics.
 ## Progress
 
 ### Decide stack 
-- [X] Full-stack: Next.js with TypeScript and Tailwind CSS, Backend: FastAPI
+- [X] Frontend: Next.js with TypeScript, Tailwind CSS
+- [X] Backend: FastAPI
 
 ### Initial setup
 
