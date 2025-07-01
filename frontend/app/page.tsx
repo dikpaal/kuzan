@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Upload, Camera, Activity } from 'lucide-react'
+import { Upload, Camera, Activity } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import ReactMarkdown from "react-markdown"
@@ -43,37 +43,27 @@ export default function CalisthenicsAnalyzer() {
 
         setIsProcessing(true)
 
-        // Simulate processing time
-        await new Promise((resolve) => setTimeout(resolve, 2500))
+        const formData = new FormData()
+        formData.append("file", selectedFile)
 
-        // Dummy response data
-        const dummyResult: AnalysisResult = {
-            processedImage: "/placeholder.svg?height=300&width=300",
-            analysis: `## Form Analysis
+        try {
+            const response = await fetch("http://localhost:8000/analyze", {
+                method: "POST",
+                body: formData,
+            })
 
-**Overall**: Good foundation, room for improvement
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`)
+            }
 
-**Strengths**
-- Proper grip width
-- Core engaged well
-- Good starting position
-
-**Areas to work on**
-- Pull shoulder blades down first
-- Get chin over the bar
-- Control the descent (3-4 seconds)
-
-**Next steps**
-1. Practice dead hangs (30-60 seconds)
-2. Focus on negative pull-ups
-3. Work on scapular pulls
-
-Keep practicing consistently - you're on the right track!`,
-            skillLevel: "Beginner+",
+            const data: AnalysisResult = await response.json()
+            setResult(data)
+        } catch (error) {
+            console.error("Error analyzing skill:", error)
+            // Optionally, set an error state here to display to the user
+        } finally {
+            setIsProcessing(false)
         }
-
-        setResult(dummyResult)
-        setIsProcessing(false)
     }
 
     const resetAnalysis = () => {
@@ -172,10 +162,10 @@ Keep practicing consistently - you're on the right track!`,
 
                                     <div className="rounded-lg overflow-hidden bg-stone-100">
                                         <Image
-                                            src={result.processedImage || "/placeholder.svg"}
+                                            src={`data:image/jpeg;base64,${result.processedImage}`}
                                             alt="Analysis result"
                                             width={300}
-                                            height={200}
+                                            height={128}
                                             className="w-full h-32 object-cover"
                                         />
                                     </div>

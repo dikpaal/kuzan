@@ -1,6 +1,7 @@
 # Dummy FastAPI app
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import base64
 import os
 import uuid # Import uuid for unique filenames
@@ -8,41 +9,54 @@ from pose_detection.pose_detector import perform_pose_detection
 
 app = FastAPI()
 
+# --- MIDDLEWARE SECTION ---
+# This allows the frontend (running on localhost:3000) to communicate with the backend.
+origins = [
+    "http://localhost:3000",
+    "http://localhost",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"], # Allows all headers
+)
+# -----------------------------------------
+
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 @app.post("/analyze")
-async def analyze_photo(photo: UploadFile = File(...)):
-    # Read the uploaded photo content
-    contents = await photo.read()
+async def analyze_photo(request: Request):
+    print("--- HEADERS RECEIVED ---")
+    print(request.headers)
+    print("------------------------")
 
+    # We will manually get the form data now
     try:
-        # Generate a unique filename for the processed image
-        unique_filename = f"{uuid.uuid4()}.jpg"
-        output_path = os.path.join("/Users/dikpaal/Desktop/main/code/projects/kuzan/backend/processed_images", unique_filename)
+        form_data = await request.form()
+        uploaded_file = form_data.get("file")
 
-        # Perform pose detection
-        processed_image_bytes, landmarks = perform_pose_detection(contents, output_path)
+        if not uploaded_file or not hasattr(uploaded_file, 'read'):
+            print("ERROR: 'file' not found in form data or is not a file.")
+            return JSONResponse(status_code=400, content={"message": "File not found in request."})
 
-        # Base64 encode the processed image bytes
+        contents = await uploaded_file.read()
+        
+        # --- The rest of your logic is the same ---
+        processed_image_bytes, landmarks = perform_pose_detection(contents)
         processed_image_base64 = base64.b64encode(processed_image_bytes).decode("utf-8")
 
-        # Convert landmarks to a string for analysis_text
-        analysis_text = str(landmarks)
-
         return JSONResponse(content={
-            "processed_image": processed_image_base64,
-            "analysis_text": analysis_text,
-            "filename": photo.filename,
-            "content_type": photo.content_type,
-            "message": "Photo received and processed for analysis"
+            "processedImage": processed_image_base64,
+            "analysis": str(landmarks),
+            "skillLevel": "Beginner+"
         })
-    except ValueError as e:
-        return JSONResponse(status_code=400, content={
-            "message": str(e)
-        })
+
     except Exception as e:
-        return JSONResponse(status_code=500, content={
-            "message": f"An unexpected error occurred: {e}"
-        })
+        print(f"An error occurred during processing: {e}")
+        return JSONResponse(status_code=500, content={"message": f"An unexpected error occurred: {e}"})
