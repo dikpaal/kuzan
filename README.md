@@ -1,10 +1,10 @@
 # Kuzan
 An app for people wanting to start calisthenics.
 
-## Progress
-
-### Currently:
+## Currently:
 - [ ] Integrating GenAI
+
+## Progress so far
 
 ### Decide stack 
 - [X] Frontend: Next.js with TypeScript, Tailwind CSS
