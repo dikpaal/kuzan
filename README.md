@@ -3,6 +3,9 @@ An app for people wanting to start calisthenics.
 
 ## Progress
 
+### Currently working on:
+- [ ] Integrating an LLM/SLM
+
 ### Decide stack 
 - [X] Frontend: Next.js with TypeScript, Tailwind CSS
 - [X] Backend: FastAPI
