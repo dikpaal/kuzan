@@ -8,9 +8,9 @@ An app for people wanting to start calisthenics.
 - [x] FastAPI backend structure
 - [x] UI components (buttons, cards, theme provider)
 - [x] Project structure and configuration
-- [ ] Backend API endpoints
+- [X] Backend API endpoints
 - [ ] Frontend-backend integration
-- [ ] Pose detection integration
+- [X] Pose detection integration
 - [ ] Exercise tracking features
 - [ ] User interface for workouts
 - [ ] Deployment setup
