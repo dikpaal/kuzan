@@ -1,7 +1,9 @@
 # Kuzan
 An app for people wanting to start calisthenics.
 
-## Currently:
+
+## To-do:
+- [ ] Research and write angle calculation logic for variations of planche, front lever, back lever, and lsit.
 - [ ] Integrating GenAI
 
 ## Progress so far
