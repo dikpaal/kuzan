@@ -1,16 +1,24 @@
-# kuzan
+# Kuzan
 An app for people wanting to start calisthenics.
 
 ## Progress
 
+- [X] Decide stack (Full-stack: Next.js with TypeScript and Tailwind CSS, Backend: FastAPI) 
+
 - [x] Initial pose detection model setup
-- [x] Next.js frontend with TypeScript and Tailwind CSS
-- [x] FastAPI backend structure
-- [x] UI components (buttons, cards, theme provider)
-- [x] Project structure and configuration
-- [X] Backend API endpoints
-- [ ] Frontend-backend integration
-- [X] Pose detection integration
+    - [x] Project structure and configuration
+- [x] Frontend
+        - [X] Analyze page
+        - [x] UI components (buttons, cards, theme provider)
+        - [X] Image upload component
+        - [X] Output display component
+- [X] Backend
+    - [x] Pose detection ML model
+    - [X] Backend API endpoints
+    - [x] FastAPI backend structure
+    - [X] Middlewares
+    - [X] Pose detection integration
+- [X] Frontend-backend integration
 - [ ] Exercise tracking features
-- [ ] User interface for workouts
+- [ ] Other features
 - [ ] Deployment setup
