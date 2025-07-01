@@ -4,11 +4,13 @@ An app for people wanting to start calisthenics.
 ## Progress
 
 ### Currently:
-- [ ] Integrating an LLM/SLM
+- [ ] Integrating GenAI
 
 ### Decide stack 
 - [X] Frontend: Next.js with TypeScript, Tailwind CSS
 - [X] Backend: FastAPI
+- [ ] AI (GenAI): 
+- [X] ML: Pose estimation using Mediapipe, for now (Computer Vision)
 - [ ] Database: 
 - [ ] Deployment: 
 
