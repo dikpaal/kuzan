@@ -1,43 +1,160 @@
 from .calculate_angle import calculate_angle
 
+# ==============================================================================
+#  SKILL RULES DATABASE
+#  This dictionary stores all the analysis rules for each calisthenics skill.
+# ==============================================================================
+SKILL_RULES = {
+    "planche_lean": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 30, "max": 80},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 170, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 170, "max": 180},
+        ]
+    },
+    "tuck_planche": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 30, "max": 60},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 45, "max": 70},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 30, "max": 60},
+        ]
+    },
+    "advanced_tuck_planche": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 45, "max": 70},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 85, "max": 100},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 85, "max": 95},
+        ]
+    },
+    "straddle_planche": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 45, "max": 70},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Leg Abduction", "points": ["RIGHT_KNEE", "MID_HIP", "LEFT_KNEE"], "min": 45, "max": 90},
+        ]
+    },
+    "full_planche": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 50, "max": 80},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 175, "max": 180},
+        ]
+    },
+    "tuck_front_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 80, "max": 100},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 30, "max": 60},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 30, "max": 60},
+        ]
+    },
+    "advanced_tuck_front_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 80, "max": 100},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 85, "max": 100},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 85, "max": 95},
+        ]
+    },
+    "straddle_front_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 80, "max": 100},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Leg Abduction", "points": ["RIGHT_KNEE", "MID_HIP", "LEFT_KNEE"], "min": 45, "max": 90},
+        ]
+    },
+    "full_front_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 85, "max": 95},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 175, "max": 180},
+        ]
+    },
+    "tuck_back_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 120, "max": 160},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 30, "max": 60},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 30, "max": 60},
+        ]
+    },
+    "advanced_tuck_back_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 150, "max": 170},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 120, "max": 140},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 85, "max": 100},
+        ]
+    },
+    "straddle_back_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 170, "max": 180},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Leg Abduction", "points": ["RIGHT_KNEE", "MID_HIP", "LEFT_KNEE"], "min": 45, "max": 90},
+        ]
+    },
+    "full_back_lever": {
+        "angles_to_check": [
+            {"name": "Shoulder Angle", "points": ["LEFT_ELBOW", "LEFT_SHOULDER", "LEFT_HIP"], "min": 175, "max": 180},
+            {"name": "Elbow Angle", "points": ["LEFT_SHOULDER", "LEFT_ELBOW", "LEFT_WRIST"], "min": 175, "max": 180},
+            {"name": "Hip Angle", "points": ["LEFT_SHOULDER", "LEFT_HIP", "LEFT_KNEE"], "min": 175, "max": 180},
+            {"name": "Knee Angle", "points": ["LEFT_HIP", "LEFT_KNEE", "LEFT_ANKLE"], "min": 175, "max": 180},
+        ]
+    }
+}
+
+# ==============================================================================
+#  MAIN ANALYSIS FUNCTION
+# ==============================================================================
 def analyze_form(selected_skill, landmarks):
-    
-    # 30 <= shoulder angle <= 80: requires hip coordinate, shoulder coordinate, and elbow coordinate
-    # 170 <= elbow angle <= 180: requires shoulder coordinate, elbow coordinate, and wrist coordinate
-    # 170 <= hip angle <= 180: requires shoulder coordinate, hip coordinate, and knee coordinate
+    """
+    Analyzes the form for a given skill based on detected landmarks.
 
-    
-    if selected_skill == "planche_lean":
-        left_hip_coord = landmarks.get("LEFT_HIP")
-        left_shoulder_coord = landmarks.get("LEFT_SHOULDER")
-        left_elbow_coord = landmarks.get("LEFT_ELBOW")
-        left_wrist_coord = landmarks.get("LEFT_WRIST")
-        left_knee_coord = landmarks.get("LEFT_KNEE")
+    Args:
+        selected_skill (str): The name of the skill to analyze (e.g., "tuck_planche").
+        landmarks (dict): A dictionary of detected landmark coordinates.
 
-        # --- Use the new function with the vertex in the middle ---
+    Returns:
+        str: A formatted string containing feedback for the user.
+    """
+    if selected_skill not in SKILL_RULES:
+        return f"Analysis for the skill '{selected_skill}' is not implemented yet."
 
-        # Shoulder angle: vertex is SHOULDER
-        shoulder_angle = calculate_angle(left_elbow_coord, left_shoulder_coord, left_hip_coord)
+    rules = SKILL_RULES[selected_skill]
+    feedback_list = []
+
+    for angle_rule in rules["angles_to_check"]:
+        angle_name = angle_rule["name"]
+        p1_name, p2_name, p3_name = angle_rule["points"]
+        min_angle, max_angle = angle_rule["min"], angle_rule["max"]
+
+        # Get coordinates for the three points
+        p1 = landmarks.get(p1_name)
+        p2 = landmarks.get(p2_name)
+        p3 = landmarks.get(p3_name)
+
+        # --- Robustness Check: Ensure all landmarks were detected ---
+        if not all([p1, p2, p3]):
+            missing_points = [name for name, point in zip([p1_name, p2_name, p3_name], [p1, p2, p3]) if not point]
+            feedback = f"Could not check {angle_name} because the following points were not detected: {', '.join(missing_points)}."
+            feedback_list.append(feedback)
+            continue # Skip to the next angle
+
+        # --- Calculate the angle and generate feedback ---
+        calculated_angle = calculate_angle(p1, p2, p3)
         
-        # Elbow angle: vertex is ELBOW
-        elbow_angle = calculate_angle(left_shoulder_coord, left_elbow_coord, left_wrist_coord)
-        
-        # Hip angle: vertex is HIP
-        hip_angle = calculate_angle(left_shoulder_coord, left_hip_coord, left_knee_coord)
-        
-        if (shoulder_angle >= 30 and shoulder_angle <= 80):
-            shoulder_feedback = "The shoulder angle is good."
+        if min_angle <= calculated_angle <= max_angle:
+            feedback = f"✅ {angle_name}: Your angle is {calculated_angle:.1f}°, which is in the ideal range of {min_angle}-{max_angle}°."
         else:
-            shoulder_feedback = f"The shoulder angle is {shoulder_angle:.2f} and is not optimal. Aim for an angle between 30 and 80 degrees."
-            
-        if (elbow_angle >= 170 and elbow_angle <= 180):
-            elbow_feedback = "The elbow angle is good."
-        else:            
-            elbow_feedback = f"The elbow angle is {elbow_angle:.2f} and is not optimal. Aim for an angle between 170 and 180 degrees."
-            
-        if (hip_angle >= 170 and hip_angle <= 180):
-            hip_feedback = "The hip angle is good."
-        else:
-            hip_feedback = f"The hip angle is {hip_angle:.2f} and is not optimal. Aim for an angle between 170 and 180 degrees."
+            feedback = f"❌ {angle_name}: Your angle is {calculated_angle:.1f}°. Try to aim for the ideal range of {min_angle}-{max_angle}°."
         
-        return f"Shoulder feedback: {shoulder_feedback}\nElbow feedback: {elbow_feedback}\nHip feedback: {hip_feedback}"
+        feedback_list.append(feedback)
+
+    return "\n\n".join(feedback_list)
