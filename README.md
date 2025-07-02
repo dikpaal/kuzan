@@ -40,22 +40,22 @@ An app for people wanting to start calisthenics.
 - [X] Frontend-backend integration
 
 ### Features 
-- [ ] Planche
+- [X] Planche
     - [X] Planche lean
-    - [ ] Tuck planche
-    - [ ] Advanced Tuck planche
-    - [ ] Straddle planche
-    - [ ] Full planche
-- [ ] Front Lever
-    - [ ] Tuck front-lever
-    - [ ] Advanced Tuck front-lever
-    - [ ] Straddle front-lever
-    - [ ] Full front-lever
-- [ ] Back Lever
-    - [ ] Tuck back-lever
-    - [ ] Advanced Tuck back-lever
-    - [ ] Straddle back-lever
-    - [ ] Full back-lever
+    - [X] Tuck planche
+    - [X] Advanced Tuck planche
+    - [X] Straddle planche
+    - [X] Full planche
+- [X] Front Lever
+    - [X] Tuck front-lever
+    - [X] Advanced Tuck front-lever
+    - [X] Straddle front-lever
+    - [X] Full front-lever
+- [X] Back Lever
+    - [X] Tuck back-lever
+    - [X] Advanced Tuck back-lever
+    - [X] Straddle back-lever
+    - [X] Full back-lever
 - [ ] Lsit
 - [ ] Exercise tracking features
 - [ ] Other features
