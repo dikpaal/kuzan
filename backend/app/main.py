@@ -29,9 +29,9 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Landing": "Page"}
 
-@app.post("/analyze")
+@app.post("/analyze-form")
 async def analyze_photo(request: Request):
     print("--- HEADERS RECEIVED ---")
     print(request.headers)

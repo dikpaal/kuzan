@@ -5,6 +5,13 @@ An app for people wanting to start calisthenics.
 ## To-do:
 - [X] Research and write angle calculation logic for variations of planche, front lever, back lever, and lsit.
 - [X] Integrate GenAI
+- [X] Design landing page
+- [X] Design auth page
+- [X] Integrate landing page
+- [X] Integrate auth page
+- [ ] Set up database
+- [ ] Link the database with the app
+- [ ] Write logic for storing user data in database
 
 
 ## Progress so far
