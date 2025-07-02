@@ -9,9 +9,9 @@ An app for people wanting to start calisthenics.
 - [X] Design auth page
 - [X] Integrate landing page
 - [X] Integrate auth page
-- [ ] Set up database
-- [ ] Link the database with the app
-- [ ] Write logic for authentication
+- [X] Set up user database
+- [X] Write logic for authentication
+- [ ] Write logic for sign out
 
 
 ## Progress so far
@@ -21,7 +21,7 @@ An app for people wanting to start calisthenics.
 - [X] Backend: FastAPI
 - [X] AI (GenAI): 
 - [X] ML: Pose estimation using Mediapipe, for now (Computer Vision)
-- [ ] Database: 
+- [X] Database: 
 - [ ] Deployment: 
 
 ### Initial setup
@@ -63,6 +63,7 @@ An app for people wanting to start calisthenics.
     - [X] Straddle back-lever
     - [X] Full back-lever
 - [ ] Lsit
+- [ ] Handstand
 - [ ] Exercise tracking features
 - [ ] Other features
 
