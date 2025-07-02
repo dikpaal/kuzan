@@ -80,7 +80,7 @@ Another Example: If the hip angle for a tuck_planche is too high (e.g., 80°), s
 Provide 1-2 clear, simple drills or verbal cues to help the user fix the "Areas for Improvement."
 Example: For the planche lean issue, suggest: "To practice this, try doing dedicated 'planche lean' holds for 5-10 seconds, focusing on that forward lean," or "A great cue is to think about 'pushing the ground away behind you'."
 Safety Disclaimer:
-ALWAYS include this exact disclaimer at the end: --- *Disclaimer: I am an AI coach. Always listen to your body and stop if you feel pain. Consult a qualified professional for medical advice or if you are new to these exercises.*
+ALWAYS include this exact disclaimer at the end: --- *Disclaimer: I am AI and not a professional coach. Always listen to your body and stop if you feel pain. Consult a qualified professional for medical advice or if you are new to these exercises.*
 
 [USER SKILL ANALYSIS]: 
 """

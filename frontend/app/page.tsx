@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Upload, Camera, Activity, ChevronDown, ChevronRight } from "lucide-react"
+import { Upload, Camera, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import ReactMarkdown from "react-markdown"
@@ -130,58 +130,60 @@ export default function CalisthenicsAnalyzer() {
     }
 
     return (
-        <div className="min-h-screen bg-stone-50 py-12 px-4">
+        <div className="min-h-screen bg-[#F5F1ED] py-12 px-4 font-poppins">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                        <Activity className="h-6 w-6 text-stone-600" />
-                        <h1 className="text-2xl font-medium text-stone-800">Kuzan</h1>
+                    <div className="flex items-center justify-center gap-3 mb-4">
+                        <Image src="/kuzan-logo.png" alt="Kuzan Logo" width={48} height={48} className="w-12 h-12" />
+                        <h1 className="text-4xl font-bold text-[#3A3A3A] tracking-tight">Kuzan</h1>
                     </div>
-                    <p className="text-stone-600 max-w-lg mx-auto">
+                    <p className="text-[#6B5B73] max-w-lg mx-auto text-lg font-medium">
                         Upload a photo of your movement and get feedback on your form
                     </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                     {/* Upload Section */}
-                    <Card className="border-stone-200 shadow-sm">
+                    <Card className="border-[#E5DDD5] shadow-sm bg-white rounded-xl">
                         <CardContent className="p-6">
-                            <h2 className="text-lg font-medium text-stone-800 mb-4">Upload Photo</h2>
+                            <h2 className="text-xl font-semibold text-[#3A3A3A] mb-4">Upload Photo</h2>
 
                             {/* Skill Selection Dropdown */}
                             <div className="mb-4">
-                                <label className="block text-sm font-medium text-stone-700 mb-2">Select Skill</label>
+                                <label className="block text-sm font-medium text-[#3A3A3A] mb-2">Select Skill</label>
                                 <div className="relative">
                                     <button
                                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                        className="w-full flex items-center justify-between px-3 py-2 border border-stone-300 rounded-md text-sm bg-white text-stone-700 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:border-stone-500"
+                                        className="w-full flex items-center justify-between px-4 py-3 border border-[#E5DDD5] rounded-lg text-sm bg-white text-[#3A3A3A] hover:bg-[#FAF8F5] focus:outline-none focus:ring-2 focus:ring-[#D4A574] focus:border-[#D4A574] transition-all duration-200 font-medium"
                                     >
                                         {selectedSkill ? selectedSkill.name : "Choose a skill"}
-                                        <ChevronDown className={`h-4 w-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
+                                        <ChevronDown
+                                            className={`h-4 w-4 text-[#7A8471] transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+                                        />
                                     </button>
 
                                     {isDropdownOpen && (
-                                        <div className="absolute z-10 w-full mt-1 bg-white border border-stone-300 rounded-md shadow-lg">
+                                        <div className="absolute z-10 w-full mt-1 bg-white border border-[#E5DDD5] rounded-lg shadow-lg">
                                             <div className="py-1">
                                                 {/* Planche Category */}
                                                 <div>
                                                     <button
                                                         onClick={() => toggleCategory("planche")}
-                                                        className="w-full flex items-center justify-between px-3 py-2 text-sm text-stone-700 hover:bg-stone-50"
+                                                        className="w-full flex items-center justify-between px-4 py-3 text-sm text-[#3A3A3A] hover:bg-[#FAF8F5] font-semibold transition-colors duration-150"
                                                     >
                                                         <span>{skillCategories.planche.name}</span>
                                                         <ChevronRight
-                                                            className={`h-4 w-4 transition-transform ${expandedCategory === "planche" ? "rotate-90" : ""}`}
+                                                            className={`h-4 w-4 text-[#7A8471] transition-transform duration-200 ${expandedCategory === "planche" ? "rotate-90" : ""}`}
                                                         />
                                                     </button>
                                                     {expandedCategory === "planche" && (
-                                                        <div className="bg-stone-25">
+                                                        <div className="bg-[#FAF8F5]">
                                                             {skillCategories.planche.skills.map((skill) => (
                                                                 <button
                                                                     key={skill.id}
                                                                     onClick={() => handleSkillSelect(skill.id, skill.name, "planche")}
-                                                                    className="w-full text-left px-6 py-2 text-sm text-stone-600 hover:bg-stone-100"
+                                                                    className="w-full text-left px-6 py-2.5 text-sm text-[#6B5B73] hover:bg-[#F0EBE3] hover:text-[#D4A574] transition-colors duration-150 font-medium"
                                                                 >
                                                                     {skill.name}
                                                                 </button>
@@ -190,26 +192,26 @@ export default function CalisthenicsAnalyzer() {
                                                     )}
                                                 </div>
 
-                                                <div className="border-t border-stone-200 my-1"></div>
+                                                <div className="border-t border-[#E5DDD5] my-1"></div>
 
                                                 {/* Front-lever Category */}
                                                 <div>
                                                     <button
                                                         onClick={() => toggleCategory("frontLever")}
-                                                        className="w-full flex items-center justify-between px-3 py-2 text-sm text-stone-700 hover:bg-stone-50"
+                                                        className="w-full flex items-center justify-between px-4 py-3 text-sm text-[#3A3A3A] hover:bg-[#FAF8F5] font-semibold transition-colors duration-150"
                                                     >
                                                         <span>{skillCategories.frontLever.name}</span>
                                                         <ChevronRight
-                                                            className={`h-4 w-4 transition-transform ${expandedCategory === "frontLever" ? "rotate-90" : ""}`}
+                                                            className={`h-4 w-4 text-[#7A8471] transition-transform duration-200 ${expandedCategory === "frontLever" ? "rotate-90" : ""}`}
                                                         />
                                                     </button>
                                                     {expandedCategory === "frontLever" && (
-                                                        <div className="bg-stone-25">
+                                                        <div className="bg-[#FAF8F5]">
                                                             {skillCategories.frontLever.skills.map((skill) => (
                                                                 <button
                                                                     key={skill.id}
                                                                     onClick={() => handleSkillSelect(skill.id, skill.name, "front-lever")}
-                                                                    className="w-full text-left px-6 py-2 text-sm text-stone-600 hover:bg-stone-100"
+                                                                    className="w-full text-left px-6 py-2.5 text-sm text-[#6B5B73] hover:bg-[#F0EBE3] hover:text-[#D4A574] transition-colors duration-150 font-medium"
                                                                 >
                                                                     {skill.name}
                                                                 </button>
@@ -218,26 +220,26 @@ export default function CalisthenicsAnalyzer() {
                                                     )}
                                                 </div>
 
-                                                <div className="border-t border-stone-200 my-1"></div>
+                                                <div className="border-t border-[#E5DDD5] my-1"></div>
 
                                                 {/* Back-lever Category */}
                                                 <div>
                                                     <button
                                                         onClick={() => toggleCategory("backLever")}
-                                                        className="w-full flex items-center justify-between px-3 py-2 text-sm text-stone-700 hover:bg-stone-50"
+                                                        className="w-full flex items-center justify-between px-4 py-3 text-sm text-[#3A3A3A] hover:bg-[#FAF8F5] font-semibold transition-colors duration-150"
                                                     >
                                                         <span>{skillCategories.backLever.name}</span>
                                                         <ChevronRight
-                                                            className={`h-4 w-4 transition-transform ${expandedCategory === "backLever" ? "rotate-90" : ""}`}
+                                                            className={`h-4 w-4 text-[#7A8471] transition-transform duration-200 ${expandedCategory === "backLever" ? "rotate-90" : ""}`}
                                                         />
                                                     </button>
                                                     {expandedCategory === "backLever" && (
-                                                        <div className="bg-stone-25">
+                                                        <div className="bg-[#FAF8F5]">
                                                             {skillCategories.backLever.skills.map((skill) => (
                                                                 <button
                                                                     key={skill.id}
                                                                     onClick={() => handleSkillSelect(skill.id, skill.name, "back-lever")}
-                                                                    className="w-full text-left px-6 py-2 text-sm text-stone-600 hover:bg-stone-100"
+                                                                    className="w-full text-left px-6 py-2.5 text-sm text-[#6B5B73] hover:bg-[#F0EBE3] hover:text-[#D4A574] transition-colors duration-150 font-medium"
                                                                 >
                                                                     {skill.name}
                                                                 </button>
@@ -252,24 +254,24 @@ export default function CalisthenicsAnalyzer() {
                             </div>
 
                             {!previewUrl ? (
-                                <div className="border-2 border-dashed border-stone-300 rounded-lg p-6 text-center hover:border-stone-400 transition-colors">
-                                    <Camera className="h-8 w-8 text-stone-400 mx-auto mb-3" />
-                                    <p className="text-stone-600 mb-3">Choose a photo</p>
+                                <div className="border-2 border-dashed border-[#E5DDD5] rounded-xl p-8 text-center hover:border-[#D4A574] transition-colors duration-200">
+                                    <Camera className="h-10 w-10 text-[#7A8471] mx-auto mb-4" />
+                                    <p className="text-[#6B5B73] mb-4 font-medium">Choose a photo</p>
                                     <input type="file" accept="image/*" onChange={handleFileInput} className="hidden" id="file-upload" />
                                     <Button
                                         asChild
                                         variant="outline"
                                         size="sm"
-                                        className="border-stone-300 text-stone-700 bg-transparent"
+                                        className="border-[#E5DDD5] text-[#3A3A3A] bg-white hover:bg-[#FAF8F5] hover:border-[#D4A574] font-medium px-6 py-2 rounded-lg transition-all duration-200"
                                     >
                                         <label htmlFor="file-upload" className="cursor-pointer">
-                                            Browse
+                                            Browse Files
                                         </label>
                                     </Button>
                                 </div>
                             ) : (
                                 <div className="space-y-4">
-                                    <div className="rounded-lg overflow-hidden bg-stone-100">
+                                    <div className="rounded-xl overflow-hidden bg-[#FAF8F5]">
                                         <Image
                                             src={previewUrl || "/placeholder.svg"}
                                             alt="Preview"
@@ -278,20 +280,20 @@ export default function CalisthenicsAnalyzer() {
                                             className="w-full h-48 object-cover"
                                         />
                                     </div>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-3">
                                         <Button
                                             onClick={analyzeSkill}
                                             disabled={isProcessing || !selectedSkill}
                                             size="sm"
-                                            className="flex-1 bg-stone-700 hover:bg-stone-800 disabled:opacity-50"
+                                            className="flex-1 bg-[#D4A574] hover:bg-[#C19660] text-white disabled:opacity-50 border-0 font-semibold py-2.5 rounded-lg transition-all duration-200"
                                         >
-                                            {isProcessing ? "Analyzing..." : "Analyze"}
+                                            {isProcessing ? "Analyzing..." : "Analyze Form"}
                                         </Button>
                                         <Button
                                             variant="outline"
                                             size="sm"
                                             onClick={resetAnalysis}
-                                            className="border-stone-300 text-stone-700 bg-transparent"
+                                            className="border-[#E5DDD5] text-[#3A3A3A] bg-white hover:bg-[#FAF8F5] font-medium px-4 rounded-lg transition-all duration-200"
                                         >
                                             Reset
                                         </Button>
@@ -302,27 +304,27 @@ export default function CalisthenicsAnalyzer() {
                     </Card>
 
                     {/* Results Section */}
-                    <Card className="border-stone-200 shadow-sm">
+                    <Card className="border-[#E5DDD5] shadow-sm bg-white rounded-xl">
                         <CardContent className="p-6">
-                            <h2 className="text-lg font-medium text-stone-800 mb-4">Analysis</h2>
+                            <h2 className="text-xl font-semibold text-[#3A3A3A] mb-4">Analysis Results</h2>
 
                             {isProcessing ? (
-                                <div className="flex flex-col items-center justify-center h-48 space-y-3">
-                                    <div className="animate-spin rounded-full h-8 w-8 border-2 border-stone-300 border-t-stone-600"></div>
-                                    <p className="text-stone-600 text-sm">Analyzing your form...</p>
+                                <div className="flex flex-col items-center justify-center h-48 space-y-4">
+                                    <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#E5DDD5] border-t-[#D4A574]"></div>
+                                    <p className="text-[#6B5B73] text-sm font-medium">Analyzing your form...</p>
                                 </div>
                             ) : result ? (
                                 <div className="space-y-4">
-                                    <div className="flex items-center gap-2 pb-2 border-b border-stone-200">
-                                        <span className="text-sm text-stone-600">Skill:</span>
-                                        <span className="text-sm font-medium text-stone-800">{selectedSkill?.name}</span>
+                                    <div className="flex items-center gap-2 pb-3 border-b border-[#E5DDD5]">
+                                        <span className="text-sm text-[#6B5B73] font-medium">Skill:</span>
+                                        <span className="text-sm font-semibold text-[#3A3A3A]">{selectedSkill?.name}</span>
                                     </div>
-                                    <div className="flex items-center gap-2 pb-2 border-b border-stone-200">
-                                        <span className="text-sm text-stone-600">Level:</span>
-                                        <span className="text-sm font-medium text-stone-800">{result.skillLevel}</span>
+                                    <div className="flex items-center gap-2 pb-3 border-b border-[#E5DDD5]">
+                                        <span className="text-sm text-[#6B5B73] font-medium">Level:</span>
+                                        <span className="text-sm font-semibold text-[#D4A574]">{result.skillLevel}</span>
                                     </div>
 
-                                    <div className="rounded-lg overflow-hidden bg-stone-100">
+                                    <div className="rounded-xl overflow-hidden bg-[#FAF8F5]">
                                         <Image
                                             src={`data:image/jpeg;base64,${result.processedImage}`}
                                             alt="Analysis result"
@@ -332,15 +334,21 @@ export default function CalisthenicsAnalyzer() {
                                         />
                                     </div>
 
-                                    <div className="prose prose-sm prose-stone max-w-none">
+                                    <div className="prose prose-sm max-w-none">
                                         <ReactMarkdown
                                             components={{
-                                                h2: ({ children }) => <h3 className="text-base font-medium text-stone-800 mb-2">{children}</h3>,
-                                                p: ({ children }) => <p className="text-sm text-stone-700 mb-2">{children}</p>,
-                                                strong: ({ children }) => <strong className="font-medium text-stone-800">{children}</strong>,
-                                                ul: ({ children }) => <ul className="text-sm text-stone-700 space-y-1 mb-3">{children}</ul>,
-                                                ol: ({ children }) => <ol className="text-sm text-stone-700 space-y-1 mb-3">{children}</ol>,
-                                                li: ({ children }) => <li className="text-stone-700">{children}</li>,
+                                                h2: ({ children }) => (
+                                                    <h3 className="text-base font-semibold text-[#3A3A3A] mb-3 mt-4">{children}</h3>
+                                                ),
+                                                p: ({ children }) => <p className="text-sm text-[#6B5B73] mb-3 leading-relaxed">{children}</p>,
+                                                strong: ({ children }) => <strong className="font-semibold text-[#3A3A3A]">{children}</strong>,
+                                                ul: ({ children }) => (
+                                                    <ul className="text-sm text-[#6B5B73] space-y-1.5 mb-4 ml-4">{children}</ul>
+                                                ),
+                                                ol: ({ children }) => (
+                                                    <ol className="text-sm text-[#6B5B73] space-y-1.5 mb-4 ml-4">{children}</ol>
+                                                ),
+                                                li: ({ children }) => <li className="text-[#6B5B73] leading-relaxed">{children}</li>,
                                             }}
                                         >
                                             {result.analysis}
@@ -348,10 +356,12 @@ export default function CalisthenicsAnalyzer() {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="flex flex-col items-center justify-center h-48 text-center space-y-3">
-                                    <Upload className="h-8 w-8 text-stone-400" />
-                                    <p className="text-stone-600 text-sm">
-                                        {!selectedSkill ? "Select a skill and upload a photo" : "Upload a photo to get started"}
+                                <div className="flex flex-col items-center justify-center h-48 text-center space-y-4">
+                                    <Upload className="h-10 w-10 text-[#7A8471]" />
+                                    <p className="text-[#6B5B73] text-sm font-medium max-w-xs">
+                                        {!selectedSkill
+                                            ? "Select a skill and upload a photo to get started"
+                                            : "Upload a photo to analyze your form"}
                                     </p>
                                 </div>
                             )}
