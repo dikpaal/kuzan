@@ -6,6 +6,7 @@ import base64
 import os
 import uuid # Import uuid for unique filenames
 from pose_detection.pose_detector import perform_pose_detection
+from pose_detection.scripts.analyze_form import analyze_form
 
 app = FastAPI()
 
@@ -40,20 +41,21 @@ async def analyze_photo(request: Request):
     try:
         form_data = await request.form()
         uploaded_file = form_data.get("file")
+        selected_skill = form_data.get("skill_id")
 
         if not uploaded_file or not hasattr(uploaded_file, 'read'):
             print("ERROR: 'file' not found in form data or is not a file.")
             return JSONResponse(status_code=400, content={"message": "File not found in request."})
 
         contents = await uploaded_file.read()
-        
-        # --- The rest of your logic is the same ---
         processed_image_bytes, landmarks = perform_pose_detection(contents)
         processed_image_base64 = base64.b64encode(processed_image_bytes).decode("utf-8")
+        
+        feedback = analyze_form(selected_skill, landmarks)
 
         return JSONResponse(content={
             "processedImage": processed_image_base64,
-            "analysis": str(landmarks),
+            "analysis": feedback,
             "skillLevel": "Beginner+"
         })
 
