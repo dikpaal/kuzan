@@ -1,4 +1,5 @@
 from .calculate_angle import calculate_angle
+from .call_llm import call_llm
 
 # ==============================================================================
 #  SKILL RULES DATABASE
@@ -156,5 +157,9 @@ def analyze_form(selected_skill, landmarks):
             feedback = f"❌ {angle_name}: Your angle is {calculated_angle:.1f}°. Try to aim for the ideal range of {min_angle}-{max_angle}°."
         
         feedback_list.append(feedback)
+        
+    all_feedback = "SKILL_NAME: " + selected_skill + "\n\n" + "SHORT_ANALYSIS_RESULTS:\n\n" + "\n\n".join(feedback_list)
+    
+    llm_response = call_llm(all_feedback)
 
-    return "\n\n".join(feedback_list)
+    return llm_response

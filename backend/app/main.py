@@ -48,7 +48,7 @@ async def analyze_photo(request: Request):
             return JSONResponse(status_code=400, content={"message": "File not found in request."})
 
         contents = await uploaded_file.read()
-        processed_image_bytes, landmarks = perform_pose_detection(contents)
+        processed_image_bytes, landmarks, image_bytes = perform_pose_detection(contents)
         processed_image_base64 = base64.b64encode(processed_image_bytes).decode("utf-8")
         
         feedback = analyze_form(selected_skill, landmarks)

@@ -5,7 +5,7 @@ import numpy as np # Added numpy import
 
 # --- Initialization ---
 
-def perform_pose_detection(image_bytes, output_path=None): # Added output_path
+def perform_pose_detection(image_bytes): # Changed to image_bytes
     # Initialize MediaPipe's Pose solution
     mp_pose = mp.solutions.pose
     pose = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.7)
@@ -71,13 +71,8 @@ def perform_pose_detection(image_bytes, output_path=None): # Added output_path
             raise ValueError("Could not encode processed image to bytes.")
         processed_image_bytes = buffer.tobytes()
 
-        # Save the annotated image to the specified output path
-        if output_path:
-            cv2.imwrite(output_path, annotated_image)
-            print(f"Processed image saved to: {output_path}")
-
         # Return the processed image bytes and landmarks
-        return processed_image_bytes, landmarks
+        return processed_image_bytes, landmarks, image_bytes
         
 
     else:

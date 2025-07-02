@@ -4,7 +4,7 @@ An app for people wanting to start calisthenics.
 
 ## To-do:
 - [X] Research and write angle calculation logic for variations of planche, front lever, back lever, and lsit.
-- [ ] Integrating GenAI
+- [X] Integrate GenAI
 
 
 ## Progress so far
@@ -12,11 +12,10 @@ An app for people wanting to start calisthenics.
 ### Decide stack 
 - [X] Frontend: Next.js with TypeScript, Tailwind CSS
 - [X] Backend: FastAPI
-- [ ] AI (GenAI): 
+- [X] AI (GenAI): 
 - [X] ML: Pose estimation using Mediapipe, for now (Computer Vision)
 - [ ] Database: 
 - [ ] Deployment: 
-
 
 ### Initial setup
 
