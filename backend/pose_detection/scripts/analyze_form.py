@@ -158,7 +158,7 @@ def analyze_form(selected_skill, landmarks):
         
         feedback_list.append(feedback)
         
-    all_feedback = "SKILL_NAME: " + selected_skill + "\n\n" + "SHORT_ANALYSIS_RESULTS:\n\n" + "\n\n".join(feedback_list)
+    all_feedback = "SKILL NAME: " + selected_skill + "\n\n" + "SHORT ANALYSIS RESULTS:\n\n" + "\n\n".join(feedback_list)
     
     llm_response = call_llm(all_feedback)
 
