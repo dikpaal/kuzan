@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useEffect } from "react"
 
 import { useState } from "react"
 import { Camera, ChevronDown, ChevronRight, Zap, Target, BarChart3 } from "lucide-react"
@@ -80,6 +81,15 @@ const FuturisticLoader = () => {
 }
 
 export default function CalisthenicsAnalyzer() {
+
+    useEffect(() => {
+        // Remove URL fragment after OAuth redirect
+        if (window.location.hash) {
+            window.history.replaceState(null, "", window.location.pathname)
+        }
+    }, [])
+
+
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
     const [previewUrl, setPreviewUrl] = useState<string | null>(null)
     const [isProcessing, setIsProcessing] = useState(false)

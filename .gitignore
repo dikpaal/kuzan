@@ -90,3 +90,4 @@ Temporary Items
 kuzan_logo.png
 package-lock.json
 package.json
+.env.local
