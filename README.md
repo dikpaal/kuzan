@@ -3,7 +3,7 @@ An app for people wanting to start calisthenics.
 
 
 ## To-do:
-- [ ] Research and write angle calculation logic for variations of planche, front lever, back lever, and lsit.
+- [X] Research and write angle calculation logic for variations of planche, front lever, back lever, and lsit.
 - [ ] Integrating GenAI
 
 
