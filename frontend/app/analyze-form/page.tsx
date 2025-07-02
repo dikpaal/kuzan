@@ -142,7 +142,7 @@ export default function CalisthenicsAnalyzer() {
         formData.append("skill_id", selectedSkill.id)
 
         try {
-            const response = await fetch("http://localhost:8000/analyze", {
+            const response = await fetch("http://localhost:8000/analyze-form", {
                 method: "POST",
                 body: formData,
             })

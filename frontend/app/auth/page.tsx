@@ -83,7 +83,7 @@ export default function AuthPage() {
                             }}
                             className="w-full bg-white hover:bg-[#FAF8F5] text-[#3A3A3A] border border-[#E5DDD5] hover:border-[#D4A574] font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-3"
                         >
-                            <img src="/google-icon.svg" alt="Google" className="h-4 w-4" />
+                            <img src="/google-icon-clear.svg" alt="Google" className="h-4 w-4" />
                             <span>{isSignUp ? "Sign up with Google" : "Sign in with Google"}</span>
                         </Button>
 
