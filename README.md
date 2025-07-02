@@ -11,7 +11,7 @@ An app for people wanting to start calisthenics.
 - [X] Integrate auth page
 - [ ] Set up database
 - [ ] Link the database with the app
-- [ ] Write logic for storing user data in database
+- [ ] Write logic for authentication
 
 
 ## Progress so far

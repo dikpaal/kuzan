@@ -88,3 +88,5 @@ Temporary Items
 .apdisk
 .env
 kuzan_logo.png
+package-lock.json
+package.json
