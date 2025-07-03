@@ -12,6 +12,8 @@ An app for people wanting to start calisthenics.
 - [X] Set up user database
 - [X] Write logic for authentication
 - [X] Write logic for sign out
+- [ ] Exercise tracking features
+- [ ] Other features
 
 
 ## Progress so far
@@ -64,8 +66,6 @@ An app for people wanting to start calisthenics.
     - [X] Full back-lever
 - [ ] Lsit
 - [ ] Handstand
-- [ ] Exercise tracking features
-- [ ] Other features
 
 ### Deployment
 - [ ] Deployment setup
