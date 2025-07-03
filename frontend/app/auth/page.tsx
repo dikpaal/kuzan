@@ -1,19 +1,35 @@
+// frontend/app/auth/page.tsx
+
 "use client"
 import { useState } from "react"
 import { Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
-import { createClient } from "@supabase/supabase-js"
-
-// Initialize Supabase client
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+// 1. Correctly import the browser client helper
+import { createClient } from "@/utils/supabase/client"
 
 export default function AuthPage() {
+    // 2. Initialize the client inside the component
+    const supabase = createClient()
     const [isSignUp, setIsSignUp] = useState(false)
 
     const toggleMode = () => {
         setIsSignUp(!isSignUp)
+    }
+
+    const handleGoogleSignIn = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: {
+                // 3. IMPORTANT: Redirect to your callback route, NOT the final page
+                redirectTo: `${window.location.origin}/auth/callback`,
+            },
+        })
+        if (error) {
+            console.error("Error signing in with Google:", error)
+            alert(error.message)
+        }
     }
 
     return (
@@ -72,15 +88,7 @@ export default function AuthPage() {
                         {/* Google Sign In Button */}
                         <Button
                             type="button"
-                            onClick={async () => {
-                                const { error } = await supabase.auth.signInWithOAuth({
-                                    provider: "google",
-                                    options: {
-                                        redirectTo: `${window.location.origin}/analyze-form`,
-                                    },
-                                })
-                                if (error) alert(error.message)
-                            }}
+                            onClick={handleGoogleSignIn}
                             className="w-full bg-white hover:bg-[#FAF8F5] text-[#3A3A3A] border border-[#E5DDD5] hover:border-[#D4A574] font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center space-x-3"
                         >
                             <img src="/google-icon-clear.svg" alt="Google" className="h-4 w-4" />
