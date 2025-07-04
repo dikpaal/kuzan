@@ -1,6 +1,5 @@
-// frontend/app/auth/page.tsx
-
 "use client"
+
 import { useState } from "react"
 import { Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -22,10 +21,11 @@ export default function AuthPage() {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "google",
             options: {
-                // 3. IMPORTANT: Redirect to your callback route, NOT the final page
+                // Redirect to callback, which will then redirect to roadmap selection for new users
                 redirectTo: `${window.location.origin}/auth/callback`,
             },
         })
+
         if (error) {
             console.error("Error signing in with Google:", error)
             alert(error.message)

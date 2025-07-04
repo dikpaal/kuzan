@@ -4,48 +4,60 @@
 
 @layer base {
     :root {
-        --background: 0 0% 100%;
-        --foreground: 20 14.3% 4.1%;
-        --card: 0 0% 100%;
-        --card-foreground: 20 14.3% 4.1%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 20 14.3% 4.1%;
-        --primary: 24 9.8% 10%;
-        --primary-foreground: 60 9.1% 97.8%;
-        --secondary: 60 4.8% 95.9%;
-        --secondary-foreground: 24 9.8% 10%;
-        --muted: 60 4.8% 95.9%;
-        --muted-foreground: 25 5.3% 44.7%;
-        --accent: 60 4.8% 95.9%;
-        --accent-foreground: 24 9.8% 10%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 60 9.1% 97.8%;
-        --border: 20 5.9% 90%;
-        --input: 20 5.9% 90%;
-        --ring: 20 14.3% 4.1%;
-        --radius: 0.5rem;
+        --background: 245 241 237;
+        /* cream */
+        --foreground: 60 60 60;
+        /* charcoal */
+        --card: 255 255 255;
+        --card-foreground: 60 60 60;
+        --popover: 255 255 255;
+        --popover-foreground: 60 60 60;
+        --primary: 196 149 108;
+        /* terracotta */
+        --primary-foreground: 255 255 255;
+        --secondary: 139 154 139;
+        /* sage */
+        --secondary-foreground: 255 255 255;
+        --muted: 248 245 242;
+        --muted-foreground: 107 107 107;
+        --accent: 139 154 139;
+        /* sage */
+        --accent-foreground: 255 255 255;
+        --destructive: 220 38 38;
+        --destructive-foreground: 255 255 255;
+        --border: 235 230 225;
+        --input: 235 230 225;
+        --ring: 196 149 108;
+        /* terracotta */
+        --radius: 0.75rem;
     }
 
     .dark {
-        --background: 20 14.3% 4.1%;
-        --foreground: 60 9.1% 97.8%;
-        --card: 20 14.3% 4.1%;
-        --card-foreground: 60 9.1% 97.8%;
-        --popover: 20 14.3% 4.1%;
-        --popover-foreground: 60 9.1% 97.8%;
-        --primary: 60 9.1% 97.8%;
-        --primary-foreground: 24 9.8% 10%;
-        --secondary: 12 6.5% 15.1%;
-        --secondary-foreground: 60 9.1% 97.8%;
-        --muted: 12 6.5% 15.1%;
-        --muted-foreground: 24 5.4% 63.9%;
-        --accent: 12 6.5% 15.1%;
-        --accent-foreground: 60 9.1% 97.8%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 60 9.1% 97.8%;
-        --border: 12 6.5% 15.1%;
-        --input: 12 6.5% 15.1%;
-        --ring: 24 5.7% 82.9%;
+        --background: 40 40 40;
+        /* dark charcoal */
+        --foreground: 245 241 237;
+        /* cream */
+        --card: 50 50 50;
+        --card-foreground: 245 241 237;
+        --popover: 50 50 50;
+        --popover-foreground: 245 241 237;
+        --primary: 196 149 108;
+        /* terracotta */
+        --primary-foreground: 255 255 255;
+        --secondary: 139 154 139;
+        /* sage */
+        --secondary-foreground: 255 255 255;
+        --muted: 60 60 60;
+        --muted-foreground: 180 180 180;
+        --accent: 139 154 139;
+        /* sage */
+        --accent-foreground: 255 255 255;
+        --destructive: 220 38 38;
+        --destructive-foreground: 255 255 255;
+        --border: 70 70 70;
+        --input: 70 70 70;
+        --ring: 196 149 108;
+        /* terracotta */
     }
 }
 
@@ -57,4 +69,240 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* Enhanced smooth top-to-bottom animations */
+@keyframes smooth-slide-down {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+    }
+}
+
+@keyframes smooth-slide-up {
+    from {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes cascade-emerge {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateY(-5px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cascade-disappear {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: translateY(-5px) scale(0.98);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+}
+
+@keyframes container-expand {
+    from {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    to {
+        max-height: 500px;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@keyframes container-collapse {
+    from {
+        max-height: 500px;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    to {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* Animation classes */
+.animate-smooth-slide-down {
+    animation: smooth-slide-down 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-smooth-slide-up {
+    animation: smooth-slide-up 0.3s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+.animate-cascade-emerge {
+    animation: cascade-emerge 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-cascade-disappear {
+    animation: cascade-disappear 0.3s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+.animate-container-expand {
+    animation: container-expand 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-container-collapse {
+    animation: container-collapse 0.3s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
+}
+
+/* Enhanced skill expansion container */
+.skill-expansion-container {
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-expansion-container.expanding {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.skill-expansion-container.collapsing {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Staggered cascade animation delays */
+.cascade-item-1 {
+    animation-delay: 0ms;
+}
+
+.cascade-item-2 {
+    animation-delay: 100ms;
+}
+
+.cascade-item-3 {
+    animation-delay: 200ms;
+}
+
+.cascade-item-4 {
+    animation-delay: 300ms;
+}
+
+.cascade-item-5 {
+    animation-delay: 400ms;
+}
+
+.cascade-item-6 {
+    animation-delay: 500ms;
+}
+
+.cascade-item-7 {
+    animation-delay: 600ms;
+}
+
+.cascade-item-8 {
+    animation-delay: 700ms;
+}
+
+/* Enhanced chevron rotation */
+.chevron-smooth {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.chevron-smooth.expanded {
+    transform: rotate(90deg);
+}
+
+.chevron-smooth.collapsed {
+    transform: rotate(0deg);
+}
+
+/* Smooth skill card interactions */
+.skill-card-smooth {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill-card-smooth:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(212, 165, 116, 0.2);
+}
+
+/* Sub-skill item smooth emergence */
+.sub-skill-smooth {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sub-skill-smooth.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.sub-skill-smooth:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(212, 165, 116, 0.15);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f1ed;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c4956c;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8845a;
 }
