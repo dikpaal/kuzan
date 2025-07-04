@@ -16,6 +16,9 @@ An app for people wanting to start calisthenics.
 - [X] Add roadmap (fe)
 - [X] Add dashboard (ee)
 - [X] Add analytics (fe)
+- [X] Configure routes
+- [ ] test routes
+- [ ] make a scoring system based on the ML model results
 
 
 ## Progress so far
