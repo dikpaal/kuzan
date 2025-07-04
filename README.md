@@ -12,8 +12,10 @@ An app for people wanting to start calisthenics.
 - [X] Set up user database
 - [X] Write logic for authentication
 - [X] Write logic for sign out
-- [ ] Exercise tracking features
-- [ ] Other features
+- [X] Plan the gamification system
+- [X] Add roadmap (fe)
+- [X] Add dashboard (ee)
+- [X] Add analytics (fe)
 
 
 ## Progress so far
